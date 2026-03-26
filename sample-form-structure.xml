@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Sample InfoPath XML Structure
+    This shows the typical structure of an InfoPath form XML file
+    Use this as a reference when explaining your form structure to Claude
+-->
+
+<my:myFields xmlns:my="http://schemas.microsoft.com/office/infopath/2003/myXSD/2024-01-15T12:00:00" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:pc="http://schemas.microsoft.com/office/infopath/2007/PartnerControls">
+
+    <!-- SIMPLE TEXT FIELDS -->
+    <my:EventName>Annual Company Picnic 2025</my:EventName>
+    <my:EventLocation>Main Campus - Outdoor Pavilion</my:EventLocation>
+    <my:Phone>214-555-1234</my:Phone>
+    <my:EventAccountNumber>123-456789</my:EventAccountNumber>
+    
+    <!-- DATE FIELDS -->
+    <my:StartDate>2025-05-15</my:StartDate>
+    <my:EndDate>2025-05-17</my:EndDate>
+    <my:SupervisorApproverDate>2025-04-20T14:30:00</my:SupervisorApproverDate>
+    
+    <!-- CHOICE FIELDS (DROPDOWNS) -->
+    <my:RequestStatus>Completed</my:RequestStatus>
+    <my:Campus>North Campus</my:Campus>
+    <my:Department>Youth Ministry</my:Department>
+    <my:SupervisorApproval>Approved</my:SupervisorApproval>
+    
+    <!-- YES/NO FIELDS (CHECKBOXES) -->
+    <my:MissionTrip>yes</my:MissionTrip>
+    <my:SendEmail>no</my:SendEmail>
+    
+    <!-- PERSON FIELDS - Simple Text Format -->
+    <my:SubmitterName>John Smith</my:SubmitterName>
+    <my:SubmitterEmail>jsmith@company.com</my:SubmitterEmail>
+    
+    <!-- PERSON FIELDS - Complex Person Picker Format -->
+    <my:MinisterName>
+        <pc:Person>
+            <pc:DisplayName>Jane Doe</pc:DisplayName>
+            <pc:AccountId>i:0#.f|membership|jdoe@company.org</pc:AccountId>
+            <pc:AccountType>User</pc:AccountType>
+        </pc:Person>
+    </my:MinisterName>
+    
+    <my:SupervisorApprover>Bob Johnson</my:SupervisorApprover>
+    
+    <!-- REPEATING TABLE 1: Expenses Pre-Defined Categories -->
+    <my:ExpensesPredefinedCategory>
+        <my:ExpensesPredefinedCategories>
+            <my:ExpensesPredefined>Activity Cost</my:ExpensesPredefined>
+            <my:ExpensesCostEach>32</my:ExpensesCostEach>
+            <my:ExpenseQty>100</my:ExpenseQty>
+            <my:ExpenseSubtotal>3200</my:ExpenseSubtotal>
+            <my:PORequired>yes</my:PORequired>
+            <my:ContractRequired/>
+        </my:ExpensesPredefinedCategories>
+        <my:ExpensesPredefinedCategories>
+            <my:ExpensesPredefined>Giveaway Items - Shirts</my:ExpensesPredefined>
+            <my:ExpensesCostEach>18.0</my:ExpensesCostEach>
+            <my:ExpenseQty>100</my:ExpenseQty>
+            <my:ExpenseSubtotal>1800</my:ExpenseSubtotal>
+            <my:PORequired>yes</my:PORequired>
+            <my:ContractRequired/>
+        </my:ExpensesPredefinedCategories>
+        <!-- BLANK ROW (should be skipped) -->
+        <my:ExpensesPredefinedCategories>
+            <my:ExpensesPredefined/>
+            <my:ExpensesCostEach xsi:nil="true"/>
+            <my:ExpenseQty xsi:nil="true"/>
+            <my:ExpenseSubtotal>0</my:ExpenseSubtotal>
+            <my:PORequired/>
+            <my:ContractRequired/>
+        </my:ExpensesPredefinedCategories>
+    </my:ExpensesPredefinedCategory>
+    
+    <!-- REPEATING TABLE 2: Expenses Other -->
+    <my:OtherExpensesRepeatingTable>
+        <my:OtherExpenses>
+            <my:OtherExpensesCategory>Custom Equipment Rental</my:OtherExpensesCategory>
+            <my:OtherExpensesCostEach>250.00</my:OtherExpensesCostEach>
+            <my:OtherExpensesQty>3</my:OtherExpensesQty>
+            <my:OtherExpensesSubtotal>750.00</my:OtherExpensesSubtotal>
+            <my:OtherPORequired>yes</my:OtherPORequired>
+            <my:OtherContractRequired>no</my:OtherContractRequired>
+        </my:OtherExpenses>
+    </my:OtherExpensesRepeatingTable>
+    
+    <!-- REPEATING TABLE 3: Revenue Pre-Defined -->
+    <my:RevenuRepeatingTable>
+        <my:RevenueItems>
+            <my:RevenueDescription>Registration Fees</my:RevenueDescription>
+            <my:RevenueAmountEach>25.00</my:RevenueAmountEach>
+            <my:RevenueQty>150</my:RevenueQty>
+            <my:RevenueSubtotal>3750.00</my:RevenueSubtotal>
+        </my:RevenueItems>
+        <my:RevenueItems>
+            <my:RevenueDescription>Merchandise Sales</my:RevenueDescription>
+            <my:RevenueAmountEach>15.00</my:RevenueAmountEach>
+            <my:RevenueQty>75</my:RevenueQty>
+            <my:RevenueSubtotal>1125.00</my:RevenueSubtotal>
+        </my:RevenueItems>
+    </my:RevenuRepeatingTable>
+    
+    <!-- REPEATING TABLE 4: Revenue Other -->
+    <my:OtherRevenueRepeatingTable>
+        <my:OtherRevenue>
+            <my:OtherRevenueCategory>Sponsorships</my:OtherRevenueCategory>
+            <my:RevenueAmountEachOther>500.00</my:RevenueAmountEachOther>
+            <my:OtherQty>2</my:OtherQty>
+            <my:OtherReveueSubtotal>1000.00</my:OtherReveueSubtotal>
+        </my:OtherRevenue>
+    </my:OtherRevenueRepeatingTable>
+    
+    <!-- REPEATING TABLE 5: Comments -->
+    <my:CommentsRepeatingTableSection>
+        <my:CommentsRepeatingTable>
+            <my:EnterCommentsSection>
+                <my:Question>This event looks great! Budget is approved.</my:Question>
+            </my:EnterCommentsSection>
+            <my:QuestionDateandTime>2025-04-15T10:30:00</my:QuestionDateandTime>
+            <my:Commenter>Entered by: Bob Johnson</my:Commenter>
+        </my:CommentsRepeatingTable>
+        <my:CommentsRepeatingTable>
+            <my:EnterCommentsSection>
+                <my:Question>Thanks for the approval!</my:Question>
+            </my:EnterCommentsSection>
+            <my:QuestionDateandTime>2025-04-15T14:22:00</my:QuestionDateandTime>
+            <my:Commenter>Entered by: John Smith</my:Commenter>
+        </my:CommentsRepeatingTable>
+    </my:CommentsRepeatingTableSection>
+    
+    <!-- BUDGET ACCOUNT NUMBERS (Concatenated in Description field) -->
+    <my:group1>
+        <my:AccountNumbersRepeatingTable>
+            <my:AccountNumbers>417-552008 30%</my:AccountNumbers>
+        </my:AccountNumbersRepeatingTable>
+        <my:AccountNumbersRepeatingTable>
+            <my:AccountNumbers>418-552008 40%</my:AccountNumbers>
+        </my:AccountNumbersRepeatingTable>
+        <my:AccountNumbersRepeatingTable>
+            <my:AccountNumbers>945-541700 30%</my:AccountNumbers>
+        </my:AccountNumbersRepeatingTable>
+    </my:group1>
+    
+    <!-- EMBEDDED ATTACHMENTS (Base64 encoded) -->
+    <my:EmbeddedAttachments>
+        <my:Attachment>
+            <my:FileName>Budget_Details.pdf</my:FileName>
+            <my:FileData>JVBERi0xLjQKJeLjz9MKMyAwIG9iago8PC9UeXBlL1BhZ2UvUGFyZW50...</my:FileData>
+        </my:Attachment>
+        <my:Attachment>
+            <my:FileName>Venue_Map.jpg</my:FileName>
+            <my:FileData>/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUD...</my:FileData>
+        </my:Attachment>
+    </my:EmbeddedAttachments>
+
+</my:myFields>
+
+<!--
+    NOTES FOR CUSTOMIZATION:
+    
+    1. Your InfoPath XML will have a different namespace
+       - Look for xmlns:my="..." at the top
+       - This is unique to your form template
+    
+    2. Field names will be different
+       - Use your actual InfoPath field names
+       - They are case-sensitive!
+    
+    3. Repeating tables have a container and row element
+       - Container: <my:ExpensesPredefinedCategory>
+       - Row: <my:ExpensesPredefinedCategories>
+       - Each row repeats inside the container
+    
+    4. Person fields can be simple text OR complex Person picker format
+       - Simple: <my:SubmitterName>John Smith</my:SubmitterName>
+       - Complex: <my:MinisterName><pc:Person>...</pc:Person></my:MinisterName>
+    
+    5. Blank rows exist but should be skipped
+       - Look for empty key fields (category dropdowns)
+       - May have xsi:nil="true" on some fields
+    
+    6. Comments often have nested structure
+       - <my:EnterCommentsSection><my:Question>text</my:Question></my:EnterCommentsSection>
+    
+    7. Attachments are Base64 encoded
+       - Script automatically decodes and uploads them
+    
+    TO GET YOUR ACTUAL XML STRUCTURE:
+    1. Open a form in InfoPath Designer
+    2. File → Save As → XML Files (*.xml)
+    3. Upload this file to Claude for analysis
+-->

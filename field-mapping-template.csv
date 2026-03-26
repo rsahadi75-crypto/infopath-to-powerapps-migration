@@ -1,0 +1,63 @@
+InfoPath Field Name,InfoPath Field Type,SharePoint Column Name,SharePoint Column Type,Notes,Example Value
+EventName,Text,Title,Single Line of Text,Main title field,Annual Picnic 2025
+SubmitterName,Person,Submitter,Person,Need text fallback: SubmitterFullName,John Smith
+SubmitterEmail,Text,SubmitterEmail,Single Line of Text,,jsmith@company.com
+StartDate,Date,Event_x0020_Date,Date and Time,Add 12:00 PM for timezone,2025-05-15
+EndDate,Date,End_x0020_Date,Date and Time,Add 12:00 PM for timezone,2025-05-17
+RequestStatus,Choice,Status,Choice,Filter: Only migrate if = Completed,Completed
+EventLocation,Text,Event_x0020_Location,Single Line of Text,,Main Campus
+MissionTrip,Yes/No,Is_x0020_Mission_x0020_Trip,Yes/No,Convert yes/no to boolean,yes
+Phone,Text,Phone,Single Line of Text,,214-555-1234
+Campus,Choice,Campus,Choice,Transform: Pregnancy Center Richardson → Pregnancy Center,North Campus
+Department,Text,Sponsoring_x0020_Department,Single Line of Text,,Youth Ministry
+AccountNumber,Text,EventAccount_x0023_,Single Line of Text,,123-45678
+SendEmail,Yes/No,SendEmail,Yes/No,Convert yes/no to boolean,no
+SupervisorApproval,Choice,Approval,Choice,Only set if Approved or Rejected,Approved
+SupervisorApprover,Person,Approver,Person,Need text fallback: Approver1FullName,Jane Doe
+SupervisorApproverDate,Date,Approval_x0020_Date,Date and Time,Add 6 hours for timezone,2025-04-20T14:30:00
+,,,,,
+REPEATING TABLE 1: Expenses Pre-Defined,,,,,
+ExpensesPredefined,Choice,Expenses,Choice,Key field - skip if blank,Activity Cost
+ExpensesCostEach,Number,Amount,Number,,50.00
+ExpenseQty,Number,Qty,Number,,100
+ExpenseSubtotal,Number,Subtotal,Number,Don't count 0 as data,5000.00
+PORequired,Yes/No,PORequired,Yes/No,Convert yes/no to boolean,yes
+ContractRequired,Yes/No,ContractRequired,Yes/No,Convert yes/no to boolean,no
+,,,,,
+REPEATING TABLE 2: Expenses Other,,,,,
+OtherExpensesCategory,Text,Expenses,Single Line of Text,Key field - skip if blank,Custom Equipment
+OtherExpensesCostEach,Number,Amount,Number,,250.00
+OtherExpensesQty,Number,Qty,Number,,5
+OtherExpensesSubtotal,Number,Subtotal,Number,,1250.00
+OtherPORequired,Yes/No,PORequired,Yes/No,Convert yes/no to boolean,yes
+OtherContractRequired,Yes/No,ContractRequired,Yes/No,Convert yes/no to boolean,no
+,,,,,
+REPEATING TABLE 3: Revenue Pre-Defined,,,,,
+RevenueDescription,Choice,RevenuePre_x002d_Defined,Choice,Key field - skip if blank,Registration Fees
+RevenueAmountEach,Number,Amount,Number,,25.00
+RevenueQty,Number,Qty,Number,,150
+RevenueSubtotal,Number,Subtotal,Number,,3750.00
+,,,,,
+REPEATING TABLE 4: Revenue Other,,,,,
+OtherRevenueCategory,Text,Title,Single Line of Text,Key field - skip if blank,T-Shirt Sales
+RevenueAmountEachOther,Number,Amount,Number,,15.00
+OtherQty,Number,Qty,Number,,75
+OtherReveueSubtotal,Number,Subtotal,Number,,1125.00
+,,,,,
+REPEATING TABLE 5: Comments,,,,,
+Question,Text,Comment,Multiple Lines of Text,Nested: EnterCommentsSection/Question,Looks great!
+QuestionDateandTime,Date,CommentDateandTime,Date and Time,Add 6 hours for timezone,2025-04-15T10:30:00
+Commenter,Person,Commenter,Person,Need text fallback: CommenterFullName; strip 'Entered by: ' prefix,Bob Johnson
+,,,,,
+SPECIAL: Budget Account Numbers,,,,,
+AccountNumbers,Text (Repeating),Description,Multiple Lines of Text,Concatenate all with comma+space,417-552008 30%, 418-552008 40%
+,,,,,
+SPECIAL: Token Fields,,,,,
+EventName,Text,Title,Single Line of Text,Original field,
+EventName (split),Text,EventName01...EventName10,Single Line of Text,Split by space into 10 tokens,Annual (token 1)
+,,,,,
+CALCULATED/AUTO FIELDS,,,,,
+,,,,,
+,,Year,Number,Extract year from StartDate,2025
+,,SecondSubmit,Yes/No,Always set to Yes (true) for migrated items,Yes
+,,Migrated,Yes/No,Always set to Yes (true) for migrated items,Yes
